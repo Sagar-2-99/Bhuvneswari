@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSS Foundation — Access Control</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Serif:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <h1>SSS FOUNDATION — Access Control</h1>
+  <p>Approve or deny which mobile numbers may use the membership application app</p>
+</header>
+
+<main class="shell">
+
+  <!-- CLAIM: shown only if no admin has ever been set up -->
+  <div class="authBox" id="claimBox" hidden>
+    <h2>Claim Admin Access</h2>
+    <p class="hint">No admin has been set up for this app yet. Verify your email to become the admin.</p>
+
+    <div id="claimStep1">
+      <input type="email" id="claimEmail" placeholder="Your Gmail / email address">
+      <div class="msg error" id="claimStep1Msg"></div>
+      <button class="btn" onclick="sendClaimOtp()" id="claimSendBtn">Send OTP</button>
+    </div>
+
+    <div id="claimStep2" hidden>
+      <input type="text" id="claimOtp" placeholder="6-digit OTP from your email">
+      <input type="password" id="claimPassword" placeholder="Choose a password (min 6 characters)">
+      <input type="password" id="claimPasswordConfirm" placeholder="Confirm password">
+      <div class="msg error" id="claimStep2Msg"></div>
+      <button class="btn" onclick="claimAccess()" id="claimSubmitBtn">Claim Admin Access</button>
+    </div>
+  </div>
+
+  <!-- LOGIN: shown once an admin exists -->
+  <div class="authBox" id="loginBox" hidden>
+    <h2>Admin Login</h2>
+    <p class="hint" id="loginHint"></p>
+    <input type="password" id="passwordInput" placeholder="Admin password">
+    <div class="msg error" id="loginError"></div>
+    <div class="rowBtns">
+      <button class="btn" onclick="login()">Login</button>
+      <button class="linkBtn" onclick="showForgot()">Forgot password?</button>
+    </div>
+  </div>
+
+  <!-- FORGOT PASSWORD -->
+  <div class="authBox" id="forgotBox" hidden>
+    <h2>Reset Admin Password</h2>
+    <p class="hint">An OTP will be sent to the registered admin email.</p>
+
+    <div id="forgotStep1">
+      <input type="email" id="forgotEmail" placeholder="Registered admin email">
+      <div class="msg error" id="forgotStep1Msg"></div>
+      <div class="rowBtns">
+        <button class="btn" onclick="sendResetOtp()">Send OTP</button>
+        <button class="linkBtn" onclick="showLogin()">Back to login</button>
+      </div>
+    </div>
+
+    <div id="forgotStep2" hidden>
+      <input type="text" id="forgotOtp" placeholder="6-digit OTP from your email">
+      <input type="password" id="forgotPassword" placeholder="New password (min 6 characters)">
+      <input type="password" id="forgotPasswordConfirm" placeholder="Confirm new password">
+      <div class="msg error" id="forgotStep2Msg"></div>
+      <button class="btn" onclick="resetPassword()">Set New Password</button>
+    </div>
+  </div>
+
+  <!-- CONFIG NOTICE -->
+  <div class="authBox" id="configBox" hidden>
+    <h2>Backend not configured</h2>
+    <p class="hint">Open <code>config.js</code> and paste your deployed Google Apps Script Web App URL into <code>APPS_SCRIPT_URL</code>.</p>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" hidden>
+    <div class="dashHeader">
+      <span id="adminEmailTag"></span>
+      <button class="linkBtn" onclick="logout()">Log out</button>
+    </div>
+    <div class="summary" id="summary"></div>
+    <button class="btn btn-outline" id="refreshBtn" onclick="loadRows()">↻ Refresh</button>
+    <div id="loadingMsg" class="muted-msg" hidden>Loading…</div>
+    <div id="emptyMsg" class="muted-msg" hidden>No access requests yet.</div>
+    <div class="table-wrap">
+      <table id="rowsTable" hidden>
+        <thead>
+          <tr><th>Mobile</th><th>Name</th><th>Status</th><th>Requested</th><th>Decided</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="rowsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <p>© SSS Foundation — Shweta Shiksha Samiti, Prayagraj, Uttar Pradesh</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

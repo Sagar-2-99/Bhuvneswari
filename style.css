@@ -1,0 +1,92 @@
+:root {
+  --navy: #12233d; --maroon: #7a1f1f; --maroon-dark: #611818; --gold: #b5892a;
+  --paper: #fdfcf8; --paper2: #f7f4ea; --line: #c9c0a6; --line-dark: #8d8368;
+  --ink: #1c1a15; --muted: #5b5644; --green: #175c34;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: 'Noto Serif', 'Noto Serif Devanagari', Georgia, 'Times New Roman', serif;
+  background: var(--paper2); color: var(--ink); line-height: 1.5;
+}
+
+.site-header {
+  background: var(--navy); color: #fff;
+  padding: 20px 24px; border-bottom: 4px double var(--gold);
+  text-align: center;
+}
+.site-header h1 { margin: 0; font-size: 1.3rem; letter-spacing: 0.5px; }
+.site-header p { margin: 4px 0 0; font-size: 0.85rem; color: #d9d3bd; font-style: italic; }
+
+.shell { max-width: 900px; margin: 0 auto; padding: 24px 20px 40px; }
+
+.authBox {
+  background: var(--paper); border: 2px solid var(--line-dark);
+  padding: 28px; max-width: 400px; margin: 50px auto;
+}
+.authBox h2 { margin-top: 0; font-size: 1.1rem; color: var(--navy); }
+.authBox .hint { font-size: 0.82rem; color: var(--muted); margin-top: -6px; }
+.authBox code { background: var(--paper2); padding: 1px 5px; font-size: 0.85em; }
+.authBox input {
+  width: 100%; padding: 10px; border: 1px solid var(--line-dark);
+  font-size: 0.95rem; margin-bottom: 12px; font-family: inherit; background: #fffefb;
+}
+.authBox input:focus { outline: none; border-color: var(--maroon); box-shadow: 0 0 0 1px var(--maroon); }
+
+.btn {
+  background: var(--maroon); color: #fff; border: 1px solid var(--maroon);
+  padding: 10px 18px; font-size: 0.9rem; font-weight: 600;
+  cursor: pointer; font-family: inherit; border-radius: 2px;
+}
+.btn:hover { background: var(--maroon-dark); }
+.btn:disabled { background: #c9a9a9; border-color: #c9a9a9; cursor: not-allowed; }
+.btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--line-dark); }
+.btn-outline:hover { background: var(--paper2); }
+
+.linkBtn {
+  background: none; border: none; color: var(--navy); text-decoration: underline;
+  cursor: pointer; font-size: 0.82rem; padding: 0; font-family: inherit;
+}
+
+.msg { font-size: 0.85rem; margin-top: -6px; margin-bottom: 10px; min-height: 1.2em; }
+.msg.error { color: var(--maroon); }
+.msg.success { color: var(--green); }
+.rowBtns { display: flex; justify-content: space-between; align-items: center; margin-top: 6px; gap: 12px; }
+
+#dashboard { max-width: 900px; margin: 0 auto; }
+.dashHeader { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; }
+#adminEmailTag { font-size: 0.82rem; color: var(--muted); }
+
+.summary { display: flex; gap: 12px; margin-bottom: 18px; flex-wrap: wrap; }
+.summary-card {
+  flex: 1; min-width: 120px; background: var(--paper); border: 1px solid var(--line-dark);
+  padding: 12px 16px; text-align: center;
+}
+.summary-card .n { font-size: 1.5rem; font-weight: 700; color: var(--navy); }
+.summary-card .l { font-size: 0.78rem; color: var(--muted); }
+
+#refreshBtn { margin-bottom: 14px; }
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: var(--paper); border: 1px solid var(--line-dark); min-width: 640px; }
+th { background: var(--navy); color: #f3ead2; text-align: left; padding: 10px 12px; font-size: 0.8rem; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--line); font-size: 0.88rem; vertical-align: middle; }
+tr:last-child td { border-bottom: none; }
+
+.status-pill { display: inline-block; padding: 2px 10px; font-size: 0.75rem; font-weight: 700; border: 1px solid; }
+.status-pending { color: #8a6d1a; border-color: #8a6d1a; background: #fff6df; }
+.status-approved { color: var(--green); border-color: var(--green); background: #e8f3ec; }
+.status-denied { color: var(--maroon); border-color: var(--maroon); background: #f6e9e9; }
+
+.actions button {
+  font-size: 0.78rem; padding: 5px 10px; margin-right: 6px;
+  border: 1px solid var(--line-dark); background: #fff; cursor: pointer; font-family: inherit;
+}
+.actions .approve { border-color: var(--green); color: var(--green); }
+.actions .deny { border-color: var(--maroon); color: var(--maroon); }
+.actions button:hover { opacity: 0.75; }
+
+.muted-msg { color: var(--muted); font-style: italic; padding: 20px 0; text-align: center; }
+
+.site-footer { text-align: center; color: var(--muted); font-size: 0.8rem; padding: 20px; font-style: italic; }
+
+[hidden] { display: none !important; }
