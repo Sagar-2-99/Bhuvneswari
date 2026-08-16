@@ -12,7 +12,7 @@
   };
 
   async function callBackend(payload) {
-    if (!window.APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+    if (typeof APPS_SCRIPT_URL === "undefined" || !APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
       throw new Error("CONFIG_MISSING");
     }
     const res = await fetch(APPS_SCRIPT_URL, {
